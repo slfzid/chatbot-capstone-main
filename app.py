@@ -6,13 +6,19 @@ from dotenv import load_dotenv
 import streamlit as st
 import uuid
 from streamlit_option_menu import option_menu
+hide_streamlit_style = """
+<style>
+.css-hi6a2p {padding-top: 0rem;}
+</style>
 
+"""
 # Get config from environment variables
 load_dotenv('.env')
 agent_id = os.getenv('agent_id')
 agent_alias_id = os.getenv('agentAliasId')
 ui_title = os.environ.get("BEDROCK_AGENT_TEST_UI_TITLE", "NIRVITA HEALTHCARE ASSISTANT")
 ui_icon = os.environ.get("BEDROCK_AGENT_TEST_UI_ICON")
+
 
 def init_state():
     st.session_state.session_id = str(uuid.uuid4())
