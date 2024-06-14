@@ -28,16 +28,38 @@ if len(st.session_state.items()) == 0:
     init_state()
 
 # Sidebar button to reset session state
-page = st_navbar(["Home", "Chatbot", "About"])
-pages = st_navbar(
+pages = ["Home", "Chatbot", "About", "Install", "User Guide", "API", "Examples", "Community", "GitHub"]
+parent_dir = os.path.dirname(os.path.abspath(__file__))
+urls = {"GitHub": "https://github.com/gabrieltempass/streamlit-navigation-bar"}
+styles = {
+    "nav": {
+        "background-color": "royalblue",
+        "justify-content": "left",
+    },
+    "img": {
+        "padding-right": "14px",
+    },
+    "span": {
+        "color": "white",
+        "padding": "14px",
+    },
+    "active": {
+        "background-color": "white",
+        "color": "var(--text-color)",
+        "font-weight": "normal",
+        "padding": "14px",
+    }
+}
+options = {
+    "show_menu": False,
+    "show_sidebar": False,
+}
+
+page = st_navbar(
     pages,
-    logo_path=logo_path,
-    urls=urls,
     styles=styles,
     options=options,
 )
-
-st.write(page)
 
 # Messages in the conversation
 if page == "Home":
@@ -89,9 +111,9 @@ if page == "Home":
             st.session_state.trace = response["trace"]
 
 elif page == "Chatbot":
-    st.title(f"{selected}")
+    st.title(f"{page}")
     st.write("Chatbot page content goes here.")
 
 elif page == "About":
-    st.title(f"{selected}")
+    st.title(f"{page}")
     st.write("About page content goes here.")
