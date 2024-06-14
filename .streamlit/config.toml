@@ -1,5 +1,0 @@
-[client]
-toolbarMode = "hidden"
-
-[server]
-headless = true
